@@ -1,0 +1,14 @@
+header
+{
+	display: inline-block;
+    text-align: center;
+
+	width: 100%;
+	border: 1px solid blue;
+	border-radius: 2px;
+}
+
+img
+{
+	width: 80%;
+}

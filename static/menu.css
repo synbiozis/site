@@ -1,0 +1,76 @@
+nav
+{
+	float: left;
+	position: fixed;
+	margin-top: 10px;
+	
+	width: 12%;
+	
+	background: #a7bc7a url(background_menu.png) top left repeat;
+
+	font-size: 25px;
+	
+	border: 1px solid blue;
+	border-radius: 2px;
+}
+
+nav a, a:visited
+{
+	color: white;
+}
+
+nav ul li
+{
+	color: white;
+	text-shadow: -1px -1px 3px #586835;
+	list-style-type:none;
+}
+
+nav ul li:hover
+{
+	color: #586835;
+	text-shadow: -1px 1px 4px #bdcd9c;
+}
+
+@media all and (max-width: 1024px)
+{
+
+	
+	nav
+	{
+		float: none;
+		position: static;
+		margin-top: 3px;
+		
+		width: 100%;
+		
+	}
+	
+	nav ul
+	{
+	 	margin: 2px;
+	}
+	
+	
+	nav ul li
+	{
+		display : inline;
+		padding: 2px 20px;
+		border-right: 1px solid #718743;
+	}
+	
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

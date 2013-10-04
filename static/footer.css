@@ -1,0 +1,18 @@
+footer
+{
+	margin-top: 10px;
+
+	background: #a7bc7a url(background_menu.png) top left repeat;
+	
+	border: 1px solid blue;
+	border-radius: 2px;
+}
+
+@media all and (max-width: 1024px)
+{
+	footer
+	{
+		margin-top: 3px;
+	}
+	
+}
