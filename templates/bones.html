@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+    	{% block head %}
 		<meta name="keywords" content="synbioz, sYnbioZ, synbiozis, sYnbioZis, python, tk, .tk" />
 		<meta charset="UTF-8" />
 		<link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet" type="text/css" />
@@ -10,6 +11,7 @@
 		<link href="{{ url_for('static', filename='footer.css') }}" rel="stylesheet" type="text/css" />
 		<link href="{{ url_for('static', filename='info.css') }}" rel="stylesheet" type="text/css" />
 		<title>sYnbioZis</title>
+		{% endblock %}
     </head>
 
     <body>
@@ -19,21 +21,23 @@
     	
     	<nav>
  			<ul>
-    			<a href="#"><li>First thing</li></a>
-    			<a href="#"><li>Second thing</li></a>
-    			<a href="#"><li>Third thing</li></a>
+ 				<a href="{{ url_for('index') }}"><li>Acceuil</li></a>
+ 				<a href="{{ url_for('news') }}"><li>News</li></a>
     			<a href="#"><li>...</li></a>
 			</ul>
     	</nav>
     	
+    	{% block info %}
     	<div class="info">
     		Some useless infos
     	</div>
+    	{% endblock %}
     	
+    	{% block section %}
     	<section>
-    		<h1>Title of the first part</h1>
-    		<h2>Title 2</h2>
-    		<p>Illud autem non dubitatur quod cum esset aliquando virtutum omnium domicilium Roma, ingenuos advenas plerique nobilium, ut Homerici bacarum suavitate Lotophagi, humanitatis multiformibus officiis retentabant.</p>
+    		<h1>{% block section_title %}Title of the first part{% endblock %}</h1>
+    		<!-- <h2>Title 2</h2> -->
+    		{% block section_content %}<p>Illud autem non dubitatur quod cum esset aliquando virtutum omnium domicilium Roma, ingenuos advenas plerique nobilium, ut Homerici bacarum suavitate Lotophagi, humanitatis multiformibus officiis retentabant.</p>
     		
     		<p>Alios autem dicere aiunt multo etiam inhumanius (quem locum breviter paulo ante perstrinxi) praesidii adiumentique causa, non benevolentiae neque caritatis, amicitias esse expetendas; itaque, ut quisque minimum firmitatis haberet minimumque virium, ita amicitias appetere maxime; ex eo fieri ut mulierculae magis amicitiarum praesidia quaerant quam viri et inopes quam opulenti et calamitosi quam ii qui putentur beati.</p>
     		
@@ -41,8 +45,11 @@
     		
     		<p>Equitis Romani autem esse filium criminis loco poni ab accusatoribus neque his iudicantibus oportuit neque defendentibus nobis. Nam quod de pietate dixistis, est quidem ista nostra existimatio, sed iudicium certe parentis; quid nos opinemur, audietis ex iuratis; quid parentes sentiant, lacrimae matris incredibilisque maeror, squalor patris et haec praesens maestitia, quam cernitis, luctusque declarat.</p>
     		
-    		<p>Coactique aliquotiens nostri pedites ad eos persequendos scandere clivos sublimes etiam si lapsantibus plantis fruticeta prensando vel dumos ad vertices venerint summos, inter arta tamen et invia nullas acies explicare permissi nec firmare nisu valido gressus: hoste discursatore rupium abscisa volvente, ruinis ponderum inmanium consternuntur, aut ex necessitate ultima fortiter dimicante, superati periculose per prona discedunt.</p>
+    		<p>Coactique aliquotiens nostri pedites ad eos persequendos scandere clivos sublimes etiam si lapsantibus plantis fruticeta prensando vel dumos ad vertices venerint summos, inter arta tamen et invia nullas acies explicare permissi nec firmare nisu valido gressus: hoste discursatore rupium abscisa volvente, ruinis ponderum inmanium consternuntur, aut ex necessitate ultima fortiter dimicante, superati periculose per prona discedunt.</p>{% endblock %}
     	</section>
+    	
+    	{% endblock %}
+    	
     	
     	<footer>
     		Copyright sYnbioZis<br />

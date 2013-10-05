@@ -1,0 +1,20 @@
+{% extends "bones.html" %}
+
+{% block info %}{% endblock %}
+
+
+{% block section_title %}News{% endblock %}
+
+{% block section_content %}
+
+{% for elt in news %}
+	
+	<h2>{{elt}}</h2>
+	
+	<div class="news">
+	{% for word in readfile(elt) %}
+		{{ word }}<br>
+	{% endfor %}</div>
+
+{% endfor %}
+{% endblock %}
