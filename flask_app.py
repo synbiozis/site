@@ -19,6 +19,7 @@ def toTemplates():
 	def newsfile():
 		vals = []
 		for i, j, k in walk("static/news"):
+			#/home/synbiozis/site/static/news/
 			for elt in k:
 				vals.append(elt)
 	
