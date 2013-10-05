@@ -10,8 +10,8 @@ nav
 
 	font-size: 25px;
 	
-	border: 1px solid blue;
-	border-radius: 2px;
+	border: 1px solid #718743;
+	border-radius: 10px 3px 15px 3px;
 }
 
 nav a, a:visited
@@ -62,15 +62,12 @@ nav ul li:hover
 
 }
 
+@media all and (max-device-width: 480px)
+{
 
-
-
-
-
-
-
-
-
-
-
+	nav
+	{
+		background: #a7bc7a;
+	}	
+}
 

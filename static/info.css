@@ -2,17 +2,38 @@
 {
 	
 	margin-top: 10px;
-	margin-left: 12%;
-	border: 1px solid blue;
-	border-radius: 2px;
+	margin-left: 13%;
+	border: 2px solid #718743;
+	box-shadow: 1px 1px 5px #5b7018;
+	border-radius: 15px 3px 20px 3px;
+	background: #daf1ba url(background_info.png) top left repeat;
+	
+	padding: 17px;
+	
+	font-family: Comic Sans MS;
+	font-size: 25px;
+	text-align: center;
+	color: #232323;
 }
 
 @media all and (max-width: 1024px)
 {
 	.info
 	{
-		margin-left: 0px;
-		width: 100%;
+		margin-left: 9%;
+		width: 80%;
 		margin-top: 3px;
+		
+		box-shadow: none;
+		border-radius: 10px 3px 12px 3px;
+		
+	}
+}
+
+@media all and (max-device-width: 480px)
+{
+	.info
+	{
+		background: #daf1ba;
 	}
 }

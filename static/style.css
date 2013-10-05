@@ -5,6 +5,11 @@ a
 
 body
 {
-	background: #ecffe6 url(back.png) top left repeat;
+	background: #ecffe6 url(background_body.png) top left repeat;
 }
 
+@font-face
+{
+	font-family: 'Amble';
+	src: url(Amble-Light.ttf) format('truetype');
+}
