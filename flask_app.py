@@ -17,9 +17,11 @@ def index():
 def clip():
 	return flask.render_template('clip.html')
 
-@app.route('/test/')
-def test():
-	return flask.render_template('test.html')
+
+@app.route('/news/<name>')
+def news(name):
+	return flask.render_template(name+'.html')
+
 	
 @app.route('/bones/')
 def bones():
@@ -39,6 +41,13 @@ def toTemplates():
 	
 		return vals
 		
+		
+		
+	def readnews(name):
+		i = flask.render_template(name+'.html')
+		return i.title()
+		
+		
 	def readfile(f):
 		with open('static/news/'+str(f), 'r') as f:
 			return f.read().split("\n")
@@ -47,7 +56,7 @@ def toTemplates():
 		with open('static/videos/videos', 'r') as f:
 			return f.read().split("\n")
 			
-	return dict(news=newsfile(), readfile=readfile, videos=videos())
+	return dict(news=newsfile(), readfile=readfile, videos=videos(), readnews=readnews)
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -12,6 +12,13 @@ nav
 	
 	border: 1px solid #718743;
 	border-radius: 10px 3px 15px 3px;
+	
+	padding: 5px;
+}
+
+nav img
+{
+	float: right;
 }
 
 nav a, a:visited
@@ -42,8 +49,13 @@ nav ul li:hover a
 		position: static;
 		margin-top: 3px;
 		
-		width: 100%;
+		width: 95%;
 		
+	}
+	
+	nav img
+	{
+		visibility:hidden;
 	}
 	
 	nav ul
@@ -68,6 +80,11 @@ nav ul li:hover a
 	nav
 	{
 		background: #a7bc7a;
-	}	
+	}
+	
+	nav img
+	{
+		visibility:hidden;
+	}
 }
 

@@ -9,6 +9,7 @@
 		<link href="{{ url_for('static', filename='section.css') }}" rel="stylesheet" type="text/css" />
 		<link href="{{ url_for('static', filename='footer.css') }}" rel="stylesheet" type="text/css" />
 		<link href="{{ url_for('static', filename='info.css') }}" rel="stylesheet" type="text/css" />
+		<link href="{{ url_for('static', filename='clip.css') }}" rel="stylesheet" type="text/css" />
 		<title>sYnbioZis - {% block title %}{% endblock %}</title>
     </head>
 
@@ -23,6 +24,9 @@
  				<li><a href="{{ url_for('clip') }}">Clip</a></li>
  				<li><a href="{{ url_for('bones') }}">Notifications</a></li>
 			</ul>
+			
+			<a href="#"> <img src="{{ url_for('static', filename='image/up.svg') }}" width="40", height="40" /></a>
+			
     	</nav>
     	
     	<!-- Infos Messages -->
