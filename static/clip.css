@@ -1,5 +1,10 @@
 iframe
 {
+	padding: 0;
+}
+
+.clip
+{
 	border-bottom: 2px solid black;
 	border-radius: 8px;
 	padding: 50px;

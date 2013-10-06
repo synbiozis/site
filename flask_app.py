@@ -1,7 +1,7 @@
 #! /usr/bin/python
 # -*- coding:utf-8 -*-
 
-from flask import Flask
+from flask import Flask, request
 from os import walk
 import MySQLdb as mdb
 import flask
@@ -25,6 +25,17 @@ def clip():
 def news(name):
     return flask.render_template(name+'.html')
 
+@app.route('/clip/upload/', methods=['GET', 'POST'])
+def upload():
+	if request.method == 'GET':
+		return flask.render_template('upload.html')
+	
+	if request.form['pass'] == "kabou":
+		return flask.redirect(flask.url_for('clip'))
+	else:
+		flask.flash(u'Mauvais mot de passe', 'error')
+		return flask.render_template('upload.html')
+
 
 @app.route('/bones/')
 def bones():
@@ -36,7 +47,7 @@ def bones():
 def test():
     return flask.render_template('test.html')
 
-
+"""
 @app.context_processor
 def toTemplates():
     def newsfile():
@@ -73,7 +84,7 @@ def toTemplates():
         with open('/home/synbiozis/site/static/videos/videos', 'r') as f:
             return f.read().split("\n")
 
-    return dict(news=newsfile(), readfile=readfile, videos=videos(), readnews=readnews, clips=clips())
+    return dict(news=newsfile(), readfile=readfile, videos=videos(), readnews=readnews, clips=clips())"""
 
 if __name__ == '__main__':
     app.run(debug=True)
