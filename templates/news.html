@@ -1,11 +1,8 @@
 {% extends "bones.html" %}
 
-{% block info %}{% endblock %}
+{% block title %}News{% endblock %}
 
-
-{% block section_title %}News{% endblock %}
-
-{% block section_content %}
+{% block section %}
 
 {% for elt in news %}
 	
@@ -17,4 +14,5 @@
 	{% endfor %}</div>
 
 {% endfor %}
+
 {% endblock %}

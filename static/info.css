@@ -1,19 +1,37 @@
-.info
+.info_success, .info_error
 {
-	
+	width: 80;
 	margin-top: 10px;
 	margin-left: 13%;
-	border: 2px solid #718743;
-	box-shadow: 1px 1px 5px #5b7018;
-	border-radius: 15px 3px 20px 3px;
-	background: #daf1ba url(background_info.png) top left repeat;
 	
-	padding: 17px;
+	border-radius: 15px 3px 20px 3px;
 	
 	font-family: Comic Sans MS;
-	font-size: 25px;
+	font-size: 20px;
 	text-align: center;
 	color: #232323;
+}
+
+.info_success ul, .info_error ul
+{
+	list-style-type:none;
+}
+
+.info_success
+{
+	background: #eeffd8 url(background_info.png) top left repeat;
+	color: #718743;
+	border: 2px solid #718743;
+	box-shadow: 1px 1px 5px #5b7018;
+}
+
+.info_error
+{
+	background: #ffcfcf url(background_info.png) top left repeat;
+	color: #ae3c3c;
+	border: 2px solid #ae3c3c;
+	box-shadow: 1px 1px 5px #f69999;
+	
 }
 
 @media all and (max-width: 1024px)

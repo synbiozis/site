@@ -8,6 +8,12 @@ body
 	background: #e8e9e6 url(background_body.png) top left repeat;
 }
 
+iframe
+{
+	border-bottom: 2px solid none;
+	padding-bottom: 30px;
+}
+
 @font-face
 {
 	font-family: 'Amble';
