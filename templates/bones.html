@@ -17,21 +17,21 @@
     	<header>
     		<img src="{{ url_for('static', filename='banniere.png') }}" alt="banierre" title="sYnbioZis.pythonanywhere.com"/>
     	</header>
-    	
+
     	<nav>
  			<ul>
  				<li><a href="{{ url_for('index') }}">Acceuil</a></li>
  				<li><a href="{{ url_for('clip') }}">Clip</a></li>
  				<li><a href="{{ url_for('bones') }}">Notifications</a></li>
 			</ul>
-			
-			<a href="#"> <img src="{{ url_for('static', filename='image/up.svg') }}" width="40", height="40" /></a>
-			
+
+			<a href="#"> <img src="{{ url_for('static', filename='image/up.svg') }}" width="40" height="40" alt="up" /></a>
+
     	</nav>
-    	
+
     	<!-- Infos Messages -->
-    	
-    	
+
+
     	{% with msg = get_flashed_messages(category_filter=["error"]) %}
     	{% if msg %}
 			<div class="info_error">
@@ -43,7 +43,7 @@
 			</div>
 		{% endif %}
 	    {% endwith %}
-	    
+
 		{% with msg = get_flashed_messages(category_filter=["success"]) %}
 	    {% if msg %}
 			<div class="info_success">
@@ -55,29 +55,32 @@
 			</div>
 		{% endif %}
 	    {% endwith %}
-    	
-    	
+
+
     	<section>
     		<h1>{{ self.title() }}</h1>
     		<!-- <h2>Title 2</h2> -->
     		{% block section %}<p>Illud autem non dubitatur quod cum esset aliquando virtutum omnium domicilium Roma, ingenuos advenas plerique nobilium, ut Homerici bacarum suavitate Lotophagi, humanitatis multiformibus officiis retentabant.</p>
-    		
+
     		<p>Alios autem dicere aiunt multo etiam inhumanius (quem locum breviter paulo ante perstrinxi) praesidii adiumentique causa, non benevolentiae neque caritatis, amicitias esse expetendas; itaque, ut quisque minimum firmitatis haberet minimumque virium, ita amicitias appetere maxime; ex eo fieri ut mulierculae magis amicitiarum praesidia quaerant quam viri et inopes quam opulenti et calamitosi quam ii qui putentur beati.</p>
-    		
+
     		<p>Huic Arabia est conserta, ex alio latere Nabataeis contigua; opima varietate conmerciorum castrisque oppleta validis et castellis, quae ad repellendos gentium vicinarum excursus sollicitudo pervigil veterum per oportunos saltus erexit et cautos. haec quoque civitates habet inter oppida quaedam ingentes Bostram et Gerasam atque Philadelphiam murorum firmitate cautissimas. hanc provinciae inposito nomine rectoreque adtributo obtemperare legibus nostris Traianus conpulit imperator incolarum tumore saepe contunso cum glorioso marte Mediam urgeret et Parthos.</p>
-    		
+
     		<p>Equitis Romani autem esse filium criminis loco poni ab accusatoribus neque his iudicantibus oportuit neque defendentibus nobis. Nam quod de pietate dixistis, est quidem ista nostra existimatio, sed iudicium certe parentis; quid nos opinemur, audietis ex iuratis; quid parentes sentiant, lacrimae matris incredibilisque maeror, squalor patris et haec praesens maestitia, quam cernitis, luctusque declarat.</p>
-    		
-    		<p>Coactique aliquotiens nostri pedites ad eos persequendos scandere clivos sublimes etiam si lapsantibus plantis fruticeta prensando vel dumos ad vertices venerint summos, inter arta tamen et invia nullas acies explicare permissi nec firmare nisu valido gressus: hoste discursatore rupium abscisa volvente, ruinis ponderum inmanium consternuntur, aut ex necessitate ultima fortiter dimicante, superati periculose per prona discedunt.</p>{% endblock %}
+
+    		<p>Coactique aliquotiens nostri pedites ad eos persequendos scandere clivos sublimes etiam si lapsantibus plantis fruticeta prensando vel dumos ad vertices venerint summos, inter arta tamen et invia nullas acies explicare permissi nec firmare nisu valido gressus: hoste discursatore rupium abscisa volvente, ruinis ponderum inmanium consternuntur, aut ex necessitate ultima fortiter dimicante, superati periculose per prona discedunt.</p>
+    	    <p>TEST</p>
+            {% endblock %}
+
     	</section>
 
-    	
-    	
+
+
     	<footer>
     		Copyright sYnbioZis<br />
-    		Powered by Kabou    		
+    		Powered by Kabou
     	</footer>
-    	
-		
+
+
     </body>
 </html>

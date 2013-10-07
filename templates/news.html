@@ -5,16 +5,14 @@
 {% block section %}
 
 {% for elt in news %}
-	
+
 	<h2>{{elt}}</h2>
-	
+
 	<div class="news">
 	{% for word in readfile(elt) %}
 		{{ word }}<br>
 	{% endfor %}</div>
 
 {% endfor %}
-
-<!-- {{ readnews('first_news') }} -->
 
 {% endblock %}
