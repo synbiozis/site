@@ -3,16 +3,16 @@ nav
 	float: left;
 	position: fixed;
 	margin-top: 10px;
-	
+
 	width: 12%;
-	
+
 	background: #a9b189 url(background_menu.png) top left repeat;
 
 	font-size: 25px;
-	
+
 	border: 1px solid #718743;
 	border-radius: 10px 3px 15px 3px;
-	
+
 	padding: 5px;
 }
 
@@ -21,56 +21,70 @@ nav img
 	float: right;
 }
 
-nav a, a:visited
+nav a
 {
-	color: white;
+    color: white;
+    text-shadow: -1px -1px 3px #586835;
+}
+
+nav li a:hover, nav li:hover
+{
+    color: #586835;
+    text-shadow: -1px 1px 4px #bdcd9c;
 }
 
 nav ul li
 {
-	color: white;
-	text-shadow: -1px -1px 3px #586835;
+    color: white;
+    text-shadow: -1px -1px 3px #586835;
 	list-style-type:none;
 }
 
-nav ul li:hover a
+
+nav li ul
 {
-	color: #586835;
-	text-shadow: -1px 1px 4px #bdcd9c;
+    display: none;
 }
+
+nav li:hover ul
+{
+    display: block;
+}
+
+
 
 @media all and (max-width: 1024px)
 {
 
-	
+
 	nav
 	{
 		float: none;
 		position: static;
 		margin-top: 3px;
-		
+
 		width: 95%;
-		
+
 	}
-	
+
 	nav img
 	{
 		visibility:hidden;
 	}
-	
+
 	nav ul
 	{
 	 	margin: 2px;
 	}
-	
-	
+
+
 	nav ul li
 	{
 		display : inline;
 		padding: 2px 20px;
 		border-right: 1px solid #718743;
 	}
-	
+
 
 }
 
@@ -81,7 +95,7 @@ nav ul li:hover a
 	{
 		background: #a7bc7a;
 	}
-	
+
 	nav img
 	{
 		visibility:hidden;

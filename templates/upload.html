@@ -1,15 +1,15 @@
 {% extends "bones.html" %}
 
-{% block title %}Upload{% endblock %}
+{% block title %}Upload Clip{% endblock %}
 
 {% block section %}
 
 <form action="" method="post">
 	<label for="title">Titre : </label><input type="text" name="title" id="title" placeholder="Titre" /><br />
 	<label for="address">Addresse : </label><input type="text" name="address" id="address" placeholder="Addresse" /><br /><br />
-	
+
 	<label for="comment">Commentaires : </label><br /><textarea name="comment" id="comment" placeholder="Bla bla bla..."></textarea><br /><br />
-	
+
 	<label for="pass">Mot de Passe</label><input type="password" name="pass" id="pass" placeholder = "Mot de passe" /><br />
 	<input type="submit" value="Envoyer" />
 

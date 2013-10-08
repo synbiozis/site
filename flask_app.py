@@ -2,7 +2,6 @@
 # -*- coding:utf-8 -*-
 
 from flask import Flask, request
-from os import walk
 import MySQLdb as mdb
 import flask
 app = Flask(__name__)
@@ -10,6 +9,10 @@ app = Flask(__name__)
 
 app.debug = True
 app.secret_key = "test"
+
+con = mdb.connect('mysql.server', 'synbiozis', 'synbioz@database', 'synbiozis$default')
+cur = con.cursor()
+
 
 @app.route('/')
 def index():
@@ -23,26 +26,58 @@ def clip():
 
 @app.route('/news/<name>')
 def news(name):
-    return flask.render_template(name+'.html')
+    cur.execute("SELECT title, content FROM News WHERE title='"+name+"'")
+    rows = cur.fetchall()
+    if rows:
+        return flask.render_template_string("""
+            {% extends "bones.html" %}
 
-@app.route('/clip/upload/', methods=['GET', 'POST'])
-def upload():
+            {% block title %}News{% endblock %}
+
+            {% block section %}
+
+            <h2>""" + rows[0][0] + """</h2>
+
+        	<p>""" + rows[0][1] + """</p>
+
+
+            {% endblock %}""")
+    return "This news doesn't exist."
+
+
+@app.route('/upload/clip', methods=['GET', 'POST'])
+def uploadClip():
     if request.method == 'GET':
         return flask.render_template('upload.html')
 
     if request.form['pass'] == "kabou":
 
-        con = mdb.connect('mysql.server', 'synbiozis', 'synbioz@database', 'synbiozis$default')
-
-        cur = con.cursor()
         cur.execute("INSERT INTO Clip VALUES(NULL, '" + request.form['title'] + "', '" + request.form['address'] + "', '" + request.form['comment']+"')")
 
         con.commit()
 
-        return "INSERT INTO Clip VALUES(NULL, '" + request.form['title'] + "', '" + request.form['address'] + "', '" + request.form['comment']+"')"
+        return flask.redirect(flask.url_for('clip'))
     else:
         flask.flash(u'Mauvais mot de passe', 'error')
         return flask.render_template('upload.html')
+
+
+
+@app.route('/upload/news/', methods=['GET', 'POST'])
+def uploadNews():
+    if request.method == 'GET':
+        return flask.render_template('uploadNews.html')
+
+    if request.form['pass'] == "kabou":
+
+        cur.execute("INSERT INTO News VALUES(NULL, '" + request.form['title'] + "', '" + request.form['content'] + "')")
+
+        con.commit()
+
+        return flask.redirect(flask.url_for('index'))
+    else:
+        flask.flash(u'Mauvais mot de passe', 'error')
+        return flask.render_template('uploadNews.html')
 
 
 @app.route('/bones/')
@@ -58,41 +93,24 @@ def test():
 
 @app.context_processor
 def toTemplates():
-    def newsfile():
-        vals = []
-        for i, j, k in walk("/home/synbiozis/site/static/news/"):
-            #/home/synbiozis/site/static/news/
-            for elt in k:
-                vals.append(elt)
-
-        return vals
-
 
     def clips():
-        con = mdb.connect('mysql.server', 'synbiozis', 'synbioz@database', 'synbiozis$default')
-        with con:
+        cur.execute("SELECT * FROM Clip")
 
-            cur = con.cursor()
-            cur.execute("SELECT * FROM Clip")
-
-            rows = cur.fetchall()
+        rows = cur.fetchall()
         return rows
 
 
-    def readnews(name):
-        i = flask.render_template(name+'.html')
-        return i.title()
+    def readnews():
+        cur.execute("SELECT title, content FROM News")
+        rows = cur.fetchall()
+        return rows
 
+    def nbrNews():
+        cur.execute("SELECT title, content FROM News")
+        return len(cur.fetchall()) -1
 
-    def readfile(f):
-        with open('/home/synbiozis/site/static/news/'+str(f), 'r') as f:
-            return f.read().split("\n")
-
-    def videos():
-        with open('/home/synbiozis/site/static/videos/videos', 'r') as f:
-            return f.read().split("\n")
-
-    return dict(news=newsfile(), readfile=readfile, videos=videos(), readnews=readnews, clips=clips())
+    return dict(readnews=readnews(), clips=clips(), nbrNews=nbrNews())
 
 if __name__ == '__main__':
     app.run(debug=True)

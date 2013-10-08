@@ -4,15 +4,18 @@
 
 {% block section %}
 
-{% for elt in news %}
+{% for i in range(nbrNews) %}
 
-	<h2>{{elt}}</h2>
+	<h2><a href="/news/{{ readnews[i][0] }}">{{ readnews[i][0] }}</a></h2>
 
 	<div class="news">
-	{% for word in readfile(elt) %}
-		{{ word }}<br>
-	{% endfor %}</div>
+	{{ readnews[i][1] }}
+	</div>
 
 {% endfor %}
+
+<h2><a href="/news/{{ readnews[-1][0] }}">{{ readnews[-1][0] }}</a></h2>
+<p>{{ readnews[-1][1] }}</p>
+
 
 {% endblock %}

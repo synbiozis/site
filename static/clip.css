@@ -9,3 +9,11 @@ iframe
 	border-radius: 8px;
 	padding: 50px;
 }
+
+@media all and (max-width: 1024px)
+{
+    iframe
+    {
+        width: 80%;
+    }
+}
