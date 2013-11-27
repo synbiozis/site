@@ -1,6 +1,6 @@
 nav
 {
-	float: left;
+    float: left;
 	position: fixed;
 	margin-top: 10px;
 
@@ -55,35 +55,88 @@ nav li:hover ul
 
 @media all and (max-width: 1024px)
 {
+    nav
+    {
+    	float: none;
+        border-radius: 0px;
+        margin-top: 3px;
+        padding: 0;
+        width: 90%;
+
+        position: absolute;
+    }
+
+    nav img
+    {
+    	display: none;
+    }
+
+    nav ul
+    {
+        margin: 0;
+        padding: 0;
+        font-size: 80%;
+    }
 
 
-	nav
-	{
-		float: none;
-		position: static;
-		margin-top: 3px;
+    nav li
+    {
+        float: left;
 
-		width: 95%;
+        line-height: 35px;
+        padding: 0 25px;
+        text-align: center;
+        border-right: 1px solid #718743;
+    }
 
-	}
+    nav li a
+    {
+        line-height: 35px;
+        margin: 0;
+        padding: 0 25px;
+        text-align: center;
+    }
 
-	nav img
-	{
-		visibility:hidden;
-	}
+    nav li:hover
+    {
+        background: #9caa7f url(background_menu.png) top left repeat;
+        color: white;
+        text-shadow: -1px -1px 3px #586835;
+    }
 
-	nav ul
-	{
-	 	margin: 2px;
-	}
+    nav li:hover a
+    {
+        color: white;
+        text-shadow: -1px -1px 3px #586835;
+    }
+
+    nav li ul
+    {
+        display: none;
+        border-left: 1px solid #718743;
+        border-bottom: 1px solid #718743;
+        position: absolute;
+        z-index: 200;
+        background: #a9b189 url(background_menu.png) top left repeat;
+    }
 
 
-	nav ul li
-	{
-		display : inline;
-		padding: 2px 20px;
-		border-right: 1px solid #718743;
-	}
+
+    nav li li
+    {
+        display: block;
+        float: none;
+        margin: 0px;
+        padding: 0px;
+        width: 225px;
+    }
+
+    nav li ul a
+    {
+        display: block;
+        font-size: 20px;
+        text-align: left;
+    }
 
 
 }
@@ -98,7 +151,7 @@ nav li:hover ul
 
 	nav img
 	{
-		visibility:hidden;
+		display: none;
 	}
 }
 

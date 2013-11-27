@@ -6,8 +6,6 @@ import MySQLdb as mdb
 import flask
 app = Flask(__name__)
 
-
-app.debug = True
 app.secret_key = "test"
 
 con = mdb.connect('mysql.server', 'synbiozis', 'synbioz@database', 'synbiozis$default')
@@ -17,7 +15,7 @@ cur = con.cursor()
 @app.route('/')
 def index():
 
-    return flask.render_template('news.html')
+    return flask.render_template("news.html")
 
 @app.route('/videos/')
 def clip():
@@ -45,7 +43,7 @@ def news(name):
     return "This news doesn't exist."
 
 
-@app.route('/upload/clip', methods=['GET', 'POST'])
+@app.route('/upload/clip/', methods=['GET', 'POST'])
 def uploadClip():
     if request.method == 'GET':
         return flask.render_template('upload.html')
@@ -69,7 +67,6 @@ def uploadNews():
         return flask.render_template('uploadNews.html')
 
     if request.form['pass'] == "kabou":
-
         cur.execute("INSERT INTO News VALUES(NULL, '" + request.form['title'] + "', '" + request.form['content'] + "')")
 
         con.commit()
@@ -110,7 +107,10 @@ def toTemplates():
         cur.execute("SELECT title, content FROM News")
         return len(cur.fetchall()) -1
 
-    return dict(readnews=readnews(), clips=clips(), nbrNews=nbrNews())
+    def removeSpace(val):
+        return val.replace(' ', '%20')
+
+    return dict(readnews=readnews(), clips=clips(), nbrNews=nbrNews(), removeSpace = removeSpace)
 
 if __name__ == '__main__':
     app.run(debug=True)

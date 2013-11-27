@@ -6,7 +6,7 @@
 
 {% for i in range(nbrNews) %}
 
-	<h2><a href="/news/{{ readnews[i][0] }}">{{ readnews[i][0] }}</a></h2>
+	<h2><a href="/news/{{ removeSpace(readnews[-1][0]) }}">{{ readnews[-1][0] }}</a></h2>
 
 	<div class="news">
 	{{ readnews[i][1] }}
@@ -14,7 +14,7 @@
 
 {% endfor %}
 
-<h2><a href="/news/{{ readnews[-1][0] }}">{{ readnews[-1][0] }}</a></h2>
+<h2><a href="/news/{{ removeSpace(readnews[-1][0]) }}">{{ readnews[-1][0] }}</a></h2>
 <p>{{ readnews[-1][1] }}</p>
 
 
