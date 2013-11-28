@@ -1,157 +1,92 @@
 nav
 {
-    float: left;
-	position: fixed;
-	margin-top: 10px;
-
-	width: 12%;
-
-	background: #a9b189 url(background_menu.png) top left repeat;
-
-	font-size: 25px;
-
-	border: 1px solid #718743;
-	border-radius: 10px 3px 15px 3px;
-
-	padding: 5px;
-}
-
-nav img
-{
-	float: right;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #a9b189 url(background_menu.png) top left repeat;
 }
 
 nav a
 {
     color: white;
-    text-shadow: -1px -1px 3px #586835;
 }
 
-nav li a:hover, nav li:hover
+nav ul
 {
-    color: #586835;
-    text-shadow: -1px 1px 4px #bdcd9c;
-}
+    margin: 0;
 
-nav ul li
-{
-    color: white;
+    font-size: 24px;
     text-shadow: -1px -1px 3px #586835;
 	list-style-type:none;
+	text-align: center;
+    color: white;
+
+}
+
+
+
+nav li
+{
+    float: left;
+    padding: 0;
+    line-height: 45px;
+
+    border-right: 1px solid #718743;
+}
+
+nav li:hover
+{
+    background: #9caa7f url(background_menu.png) top left repeat;
+}
+
+nav li a, nav li .roll
+{
+    display: inline-block;
+
+    line-height: 35px;
+    text-align: center;
+    width: 200px;
 }
 
 
 nav li ul
 {
     display: none;
+
+    border: 1px solid #718743;
+    border-top: none;
+    padding: 0;
+
+    position: absolute;
+    z-index: 200;
+    background: #a9b189 url(background_menu.png) top left repeat;
+}
+
+
+nav li li
+{
+
+    display: block;
+
+    border: none;
+
+
+    margin: 0;
+    width: 200px;
+}
+
+
+nav li li a
+{
+    display: block;
+    font-size: 20px;
+    text-align: left;
+    padding: 0 15px;
+
 }
 
 nav li:hover ul
 {
     display: block;
 }
-
-
-
-@media all and (max-width: 1024px)
-{
-    nav
-    {
-    	float: none;
-        border-radius: 0px;
-        margin-top: 3px;
-        padding: 0;
-        width: 90%;
-
-        position: absolute;
-    }
-
-    nav img
-    {
-    	display: none;
-    }
-
-    nav ul
-    {
-        margin: 0;
-        padding: 0;
-        font-size: 80%;
-    }
-
-
-    nav li
-    {
-        float: left;
-
-        line-height: 35px;
-        padding: 0 25px;
-        text-align: center;
-        border-right: 1px solid #718743;
-    }
-
-    nav li a
-    {
-        line-height: 35px;
-        margin: 0;
-        padding: 0 25px;
-        text-align: center;
-    }
-
-    nav li:hover
-    {
-        background: #9caa7f url(background_menu.png) top left repeat;
-        color: white;
-        text-shadow: -1px -1px 3px #586835;
-    }
-
-    nav li:hover a
-    {
-        color: white;
-        text-shadow: -1px -1px 3px #586835;
-    }
-
-    nav li ul
-    {
-        display: none;
-        border-left: 1px solid #718743;
-        border-bottom: 1px solid #718743;
-        position: absolute;
-        z-index: 200;
-        background: #a9b189 url(background_menu.png) top left repeat;
-    }
-
-
-
-    nav li li
-    {
-        display: block;
-        float: none;
-        margin: 0px;
-        padding: 0px;
-        width: 225px;
-    }
-
-    nav li ul a
-    {
-        display: block;
-        font-size: 20px;
-        text-align: left;
-    }
-
-
-}
-
-@media all and (max-device-width: 480px)
-{
-
-	nav
-	{
-		background: #a7bc7a;
-	}
-
-	nav img
-	{
-		display: none;
-	}
-}
-

@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
     <head>
 		<meta name="keywords" content="synbioz, sYnbioZ, synbiozis, sYnbioZis, python, tk, .tk" />
 		<meta charset="UTF-8" />
 		<link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet" type="text/css" />
-		<link href="{{ url_for('static', filename='header.css') }}" rel="stylesheet" type="text/css" />
+		<!-- <link href="{{ url_for('static', filename='header.css') }}" rel="stylesheet" type="text/css" /> -->
 		<link href="{{ url_for('static', filename='menu.css') }}" rel="stylesheet" type="text/css" />
 		<link href="{{ url_for('static', filename='section.css') }}" rel="stylesheet" type="text/css" />
 		<link href="{{ url_for('static', filename='footer.css') }}" rel="stylesheet" type="text/css" />
@@ -14,28 +14,22 @@
     </head>
 
     <body>
-    	<header>
-    		<img src="{{ url_for('static', filename='banniere.png') }}" alt="banierre" title="sYnbioZis.pythonanywhere.com"/>
-    	</header>
 
     	<nav>
  			<ul>
  				<li><a href="{{ url_for('index') }}">Acceuil</a></li>
  				<li><a href="{{ url_for('clip') }}">Clip</a></li>
  				<li><a href="{{ url_for('bones') }}">Notifications</a></li>
-                <li>Upload
+                <li><span class="roll">Upload</span>
                     <ul>
                         <li><a href="{{ url_for('uploadClip') }}" >Clip</a></li>
                         <li><a href="{{ url_for('uploadNews') }}">News</a></li>
                     </ul>
                 </li>
 			</ul>
-
-			<a href="#"> <img src="{{ url_for('static', filename='image/up.svg') }}" width="40" height="40" alt="up" /></a>
-
     	</nav>
 
-    	{% with msg = get_flashed_messages(category_filter=["error"]) %}
+        {% with msg = get_flashed_messages(category_filter=["error"]) %}
     	{% if msg %}
 			<div class="info_error">
 			<ul>
@@ -62,7 +56,7 @@
 
     	<section>
     		<h1>{{ self.title() }}</h1>
-    		{% block section %}<p>Illud autem non dubitatur quod cum esset aliquando virtutum omnium domicilium Roma, ingenuos advenas plerique nobilium, ut Homerici bacarum suavitate Lotophagi, humanitatis multiformibus officiis retentabant.</p>
+    		{% block section %}<p>TEST Illud autem non dubitatur quod cum esset aliquando virtutum omnium domicilium Roma, ingenuos advenas plerique nobilium, ut Homerici bacarum suavitate Lotophagi, humanitatis multiformibus officiis retentabant.</p>
 
     		<p>Alios autem dicere aiunt multo etiam inhumanius (quem locum breviter paulo ante perstrinxi) praesidii adiumentique causa, non benevolentiae neque caritatis, amicitias esse expetendas; itaque, ut quisque minimum firmitatis haberet minimumque virium, ita amicitias appetere maxime; ex eo fieri ut mulierculae magis amicitiarum praesidia quaerant quam viri et inopes quam opulenti et calamitosi quam ii qui putentur beati.</p>
 

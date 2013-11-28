@@ -6,7 +6,7 @@ footer
 	/* #a7bc7a */
 	border: 1px solid #718743;
 	border-radius: 2px;
-	
+
 	text-align: center;
 	padding: 5px;
 }
@@ -17,7 +17,7 @@ footer
 	{
 		margin-top: 3px;
 	}
-	
+
 }
 
 @media all and (max-device-width: 480px)

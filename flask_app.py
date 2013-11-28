@@ -1,4 +1,4 @@
-#! /usr/bin/python
+#!/usr/bin/python
 # -*- coding:utf-8 -*-
 
 from flask import Flask, request
@@ -7,6 +7,7 @@ import flask
 app = Flask(__name__)
 
 app.secret_key = "test"
+app.debug = False
 
 con = mdb.connect('mysql.server', 'synbiozis', 'synbioz@database', 'synbiozis$default')
 cur = con.cursor()
@@ -113,7 +114,7 @@ def toTemplates():
     return dict(readnews=readnews(), clips=clips(), nbrNews=nbrNews(), removeSpace = removeSpace)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
 
 
 
