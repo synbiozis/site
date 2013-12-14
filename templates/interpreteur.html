@@ -1,0 +1,17 @@
+{% extends "bones.html" %}
+
+{% block title %}Interpréteur python{% endblock %}
+
+{% block section %}
+
+<form action="#" method="post">
+	<label for="code">Code : </label><br /><textarea name="code" id="code" placeholder="print sum([weight, value for weight, value in zip(weights, values)]) > threshold"></textarea><br /><br />
+
+	<label for="pass">Password</label><input type="password" name="pass" id="pass" placeholder = "*******" /><br />
+
+	<input type="submit" value="Launch" />
+
+</form>
+
+
+{% endblock %}
