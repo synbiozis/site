@@ -18,8 +18,7 @@
     	<nav>
  			<ul>
  				<li><a href="{{ url_for('index') }}">Acceuil</a></li>
- 				<li><a href="{{ url_for('clip') }}">Clip</a></li>
- 				<li><a href="{{ url_for('bones') }}">Notifications</a></li>
+ 				<li><a href = "{{ url_for('clip') }}">Clip</a></li>
                 <li><span class="roll">Upload</span>
                     <ul>
                         <li><a href="{{ url_for('uploadClip') }}" >Clip</a></li>
@@ -28,7 +27,7 @@
                 </li>
 			</ul>
     	</nav>
-
+        <div class=infos>
         {% with msg = get_flashed_messages(category_filter=["error"]) %}
     	{% if msg %}
 			<div class="info_error">
@@ -52,11 +51,11 @@
 			</div>
 		{% endif %}
 	    {% endwith %}
-
+        </div>
 
     	<section>
     		<h1>{{ self.title() }}</h1>
-    		{% block section %}<p>TEST Illud autem non dubitatur quod cum esset aliquando virtutum omnium domicilium Roma, ingenuos advenas plerique nobilium, ut Homerici bacarum suavitate Lotophagi, humanitatis multiformibus officiis retentabant.</p>
+    		{% block section %}<p>Illud autem non dubitatur quod cum esset aliquando virtutum omnium domicilium Roma, ingenuos advenas plerique nobilium, ut Homerici bacarum suavitate Lotophagi, humanitatis multiformibus officiis retentabant.</p>
 
     		<p>Alios autem dicere aiunt multo etiam inhumanius (quem locum breviter paulo ante perstrinxi) praesidii adiumentique causa, non benevolentiae neque caritatis, amicitias esse expetendas; itaque, ut quisque minimum firmitatis haberet minimumque virium, ita amicitias appetere maxime; ex eo fieri ut mulierculae magis amicitiarum praesidia quaerant quam viri et inopes quam opulenti et calamitosi quam ii qui putentur beati.</p>
 
