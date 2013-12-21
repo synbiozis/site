@@ -81,6 +81,14 @@ def uploadClip():
         return flask.render_template('upload.html')
 
 
+
+@app.route('/settings/')
+def settings():
+    return flask.render_template('settings.html')
+
+
+
+
 @app.context_processor
 def temp():
     def removeSpace(val):
@@ -108,7 +116,17 @@ def temp():
         rows = cursor.fetchall()
         return rows
 
-    return dict(removeSpace=removeSpace, clips=clips, nbrNews=nbrNews(), readnews=readnews())
+    def color():
+        color = '_blue'
+        c = dict()
+
+        c['style'] = flask.url_for('static', filename='style' + color + '.css')
+        c['menu'] = flask.url_for('static', filename='menu' + color + '.css')
+        c['footer'] = flask.url_for('static', filename='footer' + color + '.css')
+        c['form'] = flask.url_for('static', filename='form' + color + '.css')
+        return c
+
+    return dict(removeSpace=removeSpace, clips=clips, nbrNews=nbrNews(), readnews=readnews(), color=color())
 
 
 

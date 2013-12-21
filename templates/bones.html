@@ -3,11 +3,11 @@
     <head>
 		<meta name="keywords" content="synbioz, sYnbioZ, synbiozis, sYnbioZis, python, tk, .tk" />
 		<meta charset="UTF-8" />
-		<link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet" type="text/css" />
-		<!-- <link href="{{ url_for('static', filename='header.css') }}" rel="stylesheet" type="text/css" /> -->
-		<link href="{{ url_for('static', filename='menu.css') }}" rel="stylesheet" type="text/css" />
+		<link href="{{color['style']}}" rel="stylesheet" type="text/css" />
+		<link href="{{color['form']}}" rel="stylesheet" type="text/css" />
+		<link href="{{color['menu']}}" rel="stylesheet" type="text/css" />
 		<link href="{{ url_for('static', filename='section.css') }}" rel="stylesheet" type="text/css" />
-		<link href="{{ url_for('static', filename='footer.css') }}" rel="stylesheet" type="text/css" />
+		<link href="{{color['footer']}}" rel="stylesheet" type="text/css" />
 		<link href="{{ url_for('static', filename='info.css') }}" rel="stylesheet" type="text/css" />
 		<link href="{{ url_for('static', filename='clip.css') }}" rel="stylesheet" type="text/css" />
 		<title>sYnbioZis - {% block title %}{% endblock %}</title>
@@ -26,6 +26,7 @@
                     </ul>
                 </li>
 			</ul>
+			<img src='{{ url_for('static', filename='image/setting.svg') }}' width="40" height="40" alt="up" />
     	</nav>
         <div class=infos>
         {% with msg = get_flashed_messages(category_filter=["error"]) %}

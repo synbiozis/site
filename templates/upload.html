@@ -4,17 +4,20 @@
 
 {% block section %}
 
+
 <form action="#" method="post">
-	<label for="title">Titre : </label><input type="text" name="title" id="title" placeholder="Titre" /><br />
-	<label for="address">Addresse : </label><input type="text" name="address" id="address" placeholder="Addresse" /><br /><br />
+<fieldset>
+    <legend>Infos</legend>
+	<label for="clip_title">Titre : </label><input type="text" name="title" id="clip_title" placeholder="Titre" />
+	<label for="clip_address">Addresse : </label><input type="text" name="address" id="clip_address" placeholder="//www.youtube.com/embed/OdvCqUguIh8" /><br /><br />
 
-	<label for="comment">Commentaires : </label><br /><textarea name="comment" id="comment" placeholder="Bla bla bla..."></textarea><br /><br />
+	<label for="clip_comment">Commentaires : </label><br /><textarea name="comment" id="clip_comment" placeholder="Youre comments on the clip..."></textarea><br /><br />
 
-	<label for="pass">Mot de Passe</label><input type="password" name="pass" id="pass" placeholder = "Mot de passe" /><br />
+	<label for="clip_pass">Mot de Passe</label><input type="password" name="pass" id="clip_pass" placeholder = "Password" /><br />
 	<input type="submit" value="Envoyer" />
 
+
+</fieldset>
 </form>
-
-
 {% endblock %}
 

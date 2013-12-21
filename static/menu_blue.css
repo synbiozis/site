@@ -4,7 +4,7 @@ nav
     position: absolute;
     top: 0;
     left: 0;
-    background: #a9b189 url(background_menu.png) top left repeat;
+    background: #aab8ce url(background_menu.png) top left repeat;
 }
 
 nav img
@@ -22,7 +22,7 @@ nav ul
     margin: 0;
 
     font-size: 24px;
-    text-shadow: -1px -1px 3px #586835;
+    text-shadow: -1px -1px 3px #85afc5;
 	list-style-type:none;
 	text-align: center;
     color: white;
@@ -36,13 +36,19 @@ nav li
     float: left;
     padding: 0;
     line-height: 45px;
+    transition: color 1s;
+    border-right: 1px solid #8299be;
+    background: #aab8ce url(background_menu.png) top left repeat;
 
-    border-right: 1px solid #718743;
+    transition: background 0.5s;
+
 }
+
 
 nav li:hover
 {
-    background: #9caa7f url(background_menu.png) top left repeat;
+    background: #8397b8 url(background_menu.png) top left repeat;
+
 }
 
 nav li a, nav li .roll
@@ -59,13 +65,12 @@ nav li ul
 {
     display: none;
 
-    border: 1px solid #718743;
+    border: 1px solid #8299be;
     border-top: none;
     padding: 0;
 
     position: absolute;
     z-index: 200;
-    background: #a9b189 url(background_menu.png) top left repeat;
 }
 
 

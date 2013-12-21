@@ -1,0 +1,120 @@
+section form
+{
+	text-align: center;
+	padding: 15px;
+    font-size: 22px;
+}
+
+section form legend
+{
+    font-weight:bold;
+}
+
+section form input, textarea
+{
+	margin: 10px;
+	margin-right: 40px;
+	background-color: #f2f2f2;
+
+    border: 1px solid #686868;
+    border-radius: 3px;
+    width: 280px;
+    height: 28px;
+
+    padding: 0 10px;
+}
+
+section form textarea
+{
+    height: 90px;
+    width: 650px;
+
+    padding: 10px 10px;
+}
+
+section form input[type='submit']
+{
+    border: 1px solid #686868;
+    padding: 0 45px;
+
+    height: 30px;
+
+    cursor: pointer;
+    background: #a3ab83 url(back_submit.png) top left repeat;
+
+    color: #31433f;
+
+    border-radius: 30px;
+}
+
+section form input[type='radio']
+{
+    margin: 10px;
+	background-color: #f2f2f2;
+
+    border: 1px solid #686868;
+    border-radius: 3px;
+    width: 21px;
+    height: 21px;
+
+    padding: 0;
+}
+
+
+@keyframes submit
+{
+0% {box-shadow: 3px -3px 4px #a3ab83;}
+28% {box-shadow: -4px -4px 4px #a3ab83;}
+66% {box-shadow: -1px 4px 5px #a3ab83;}
+100% {box-shadow: 4px 4px 7px #a3ab83;}
+}
+
+@-webkit-keyframes submit  /* Safari and Chrome */
+{
+0% {box-shadow: 3px -3px 4px #a3ab83;}
+28% {box-shadow: -4px -4px 4px #a3ab83;}
+66% {box-shadow: -1px 4px 5px #a3ab83;}
+100% {box-shadow: 4px 4px 7px #a3ab83;}
+}
+
+section form input[type='submit']:hover
+{
+    animation: submit 0.7s ease-in;
+    -webkit-animation: submit 0.7s ease-in; /* Safari and Chrome */
+    box-shadow: 4px 4px 7px #a3ab83;
+
+}
+
+section legend
+{
+    text-align: left;
+}
+
+
+@media all and (max-width: 1024px)
+{
+	section form input, section form textarea
+    {
+        display: inline-block;
+        width: 50%;
+        padding: 2px;
+    }
+
+    section form
+    {
+        text-align: center;
+        padding: 5px;
+        font-size: 15px;
+    }
+
+
+}
+
+
+
+
+
+
+
+
+
