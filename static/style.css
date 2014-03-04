@@ -5,8 +5,12 @@ a
 
 body
 {
-	background: #e8e9e6 url(background_body.png) top left repeat;
-	/*background: #e8e9e6 url(back_submit.png) top left repeat;*/
+	background: #dfdfe1 url(background_body.png) top left repeat;
+}
+
+input
+{
+    outline: none
 }
 
 

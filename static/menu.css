@@ -4,7 +4,7 @@ nav
     position: absolute;
     top: 0;
     left: 0;
-    background: #a9b189 url(background_menu.png) top left repeat;
+    background: #919196 url(menu.png) top left repeat;
 }
 
 nav img
@@ -12,79 +12,63 @@ nav img
     float: right;
     margin: 2px;
 }
-nav a
-{
-    color: white;
-}
 
 nav ul
 {
     margin: 0;
-
     font-size: 24px;
-    text-shadow: -1px -1px 3px #586835;
 	list-style-type:none;
 	text-align: center;
-    color: white;
-
 }
-
-
 
 nav li
 {
     float: left;
-    padding: 0;
     line-height: 45px;
+    background: #919196 url(menu.png) top left repeat;
+    transition: background 0.5s;
 
-    border-right: 1px solid #718743;
 }
 
 nav li:hover
 {
-    background: #9caa7f url(background_menu.png) top left repeat;
+    background: #59595d url(menu.png) top left repeat;
 }
 
 nav li a, nav li .roll
 {
     display: inline-block;
-
-    line-height: 35px;
-    text-align: center;
     width: 200px;
+    color: white;
 }
 
 
 nav li ul
 {
-    display: none;
-
-    border: 1px solid #718743;
-    border-top: none;
     padding: 0;
-
     position: absolute;
     z-index: 200;
-    background: #a9b189 url(background_menu.png) top left repeat;
 }
-
-
-nav li li
-{
-
-    display: block;
-
-    border: none;
-
-
-    margin: 0;
-    width: 200px;
-}
-
-
-
 
 nav li:hover ul
 {
     display: block;
 }
+
+nav li ul li
+{
+    float: none;
+    height: 0;
+    overflow: hidden;
+    position: relative;
+    top: 2.5px;
+}
+
+nav li:hover ul li
+{
+    transition: height 0.5s;
+    height: 48px;
+}
+
+
+
