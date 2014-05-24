@@ -3,27 +3,15 @@ footer
 	margin-top: 10px;
 
 	background: #a3a3a7 url(b.png) top left repeat;
-    /* #93a7c7 */
-	box-shadow: 0 -4px 4px #e8e7e7; /* 1px solid #8299be; */
+	box-shadow: 0 -4px 4px #e8e7e7;
 	border-radius: 2px;
 
 	text-align: center;
 	padding: 5px;
 }
 
-@media all and (max-width: 1024px)
+.w3c
 {
-	footer
-	{
-		margin-top: 3px;
-	}
+    float: right;
 
-}
-
-@media all and (max-device-width: 480px)
-{
-	footer
-	{
-		background: #a7bc7a;
-	}
 }

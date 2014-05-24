@@ -1,0 +1,25 @@
+{% extends "bones.html" %}
+
+{% block name %}Genetic Algorithme{% endblock %}
+
+{% block title %}Testing the code{% endblock %}
+
+{% block section %}
+
+<p>We now have a populations class at our disposal, we can start testing. </p>
+
+<h2>Main loop</h2>
+<p>The following code loops until my population reachs its goal, until it generates an individual similar to the solution.
+We will be using getFitness(), getFittest() and a few others functions, but mainly evolve()</p>
+
+<div tabindex='0' class='code'>{{ pythonFile('main') }}</div>
+
+<h2>Result</h2>
+<p>Here is how the output should look like.</p>
+
+<div class="console"><pre>{{ textFile('result') }}</pre></div>
+
+<br />
+
+<p><a href="{{ url_for('ga', numPage=3) }}">Next - Modifying</a></p>
+{% endblock %}

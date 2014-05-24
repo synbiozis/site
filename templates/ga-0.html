@@ -1,0 +1,28 @@
+{% extends "bones.html" %}
+
+{% block name %}Genetic Algorithme{% endblock %}
+
+{% block title %}Introduction{% endblock %}
+
+{% block section %}
+<h2>The project</h2>
+<p>This project is about comparing <a href="http://en.wikipedia.org/wiki/Genetic_algorithm">genetic algorithme</a> as we use them today and genetic as it actually exist.
+Genetic algorithmes are based on <a href="http://en.wikipedia.org/wiki/Natural_selection">natural selection</a> but how they work is quite different,
+in many ways, including how to choose the bests individuals in a population or simple crossing overs.
+</p>
+<br />
+<h2>A simple test</h2>
+<p>In order to test the different versions of my algorithme, I am gonna set a precise goal for it to reach.
+To be more precise, my populations will be initiated with random series of 0 and 1, each one representing a chromosome of an individual.
+I will define a solution, wich will be a unique serie of 0 and 1. The purpuse of my algorithme is to create individual unitl on is excactly equal to the solution.
+All along my tests, i will indicate how much generations a version require in order to reach its goal, and how much time the entire algoritme requires.
+</p>
+<br />
+
+<h2>Computer</h2>
+<p>About the time a code takes to excecute itself, the result will com from a laptop, with a quite powerfull processor (intel i7-3710QM).
+I am running on Ubuntu (13.10), so don't forget to adapt the codes according to your distribution/OS</p>
+<br />
+
+<p><a href="{{ url_for('ga', numPage=1) }}">Next part - First code</a></p>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "bones.html" %}
+
+{% block name %}Genetic Algorithme{% endblock %}
+
+{% block title %}New tests{% endblock %}
+
+{% block section %}
+
+<p>Running new tests won't be very usefull with a test as ours. The new evolve function is mainly optimized for more complexes problems, no just zeros and ones.
+In fact, if we run it like that, it can take between 500 and 1200 generation to finish ! On the other side, each generation is much much faster.</p>
+<div class = "console"><pre>Find solution in 2.77381300926 s.<br />
+Average time for a generation : 0.00474967981038 s.</pre></div>
+<br /><br />
+
+<p><a href="{{ url_for('ga', numPage=5) }}">Next - Conclusion</a></p>
+{% endblock %}
+
+
+
+
+

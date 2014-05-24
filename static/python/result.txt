@@ -1,0 +1,17 @@
+population start with a fittest of 41
+Generation 1 : fittest = 41
+Generation 2 : fittest = 43
+Generation 3 : fittest = 47
+Generation 4 : fittest = 50
+Generation 5 : fittest = 53
+Generation 6 : fittest = 55
+Generation 7 : fittest = 56
+Generation 8 : fittest = 57
+Generation 9 : fittest = 59
+Generation 10 : fittest = 61
+Generation 11 : fittest = 62
+Generation 12 : fittest = 63
+Generation 13 : fittest = 64
+
+Find solution in 0.406242370605 s.
+Average time for a generation : 0.0312494131235 s.

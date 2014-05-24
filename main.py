@@ -3,6 +3,14 @@
 from flask import Flask, request
 import MySQLdb as mdb
 import flask
+
+from pygments import highlight
+from pygments.lexers import PythonLexer
+from pygments.formatters import HtmlFormatter
+from flask import Markup
+
+
+
 app = Flask(__name__)
 
 app.secret_key = "syn"
@@ -12,87 +20,18 @@ cur = con.cursor()
 
 @app.route('/')
 def index():
-    return flask.render_template("news.html")
+    return flask.render_template("main.html")
 
-@app.route('/videos/')
-def clip():
-    return flask.render_template('clip.html')
+@app.route('/ga/')
+@app.route('/ga/<int:numPage>')
+def ga(numPage=0):
+    return flask.render_template("ga-"+str(numPage)+".html")
 
 @app.route('/bones/')
 def bones():
-    flask.flash(u'Vous etes arrivés aux news !', 'success')
-    flask.flash(u'Merde, il y a un probleme...', 'error')
+    flask.flash(u'You are at the root of the project !', 'success')
+    flask.flash(u'Fucking error...', 'error')
     return flask.render_template('bones.html')
-
-
-
-
-@app.route('/news/<name>')
-def news(name):
-    cur.execute("SELECT title, content FROM News WHERE title='"+name+"'")
-    rows = cur.fetchall()
-    if rows:
-        return flask.render_template_string("""
-        <h2>""" + rows[0][0] + """</h2>
-
-        <p>""" + rows[0][1] + """</p>""")
-    return "This news doesn't exist."
-
-
-
-@app.route('/upload/news/', methods=['GET', 'POST'])
-def uploadNews():
-    if request.method == 'GET':
-        return flask.render_template('uploadNews.html')
-
-    if request.form['pass'] == "kabou":
-        cur.execute("INSERT INTO News VALUES(NULL, '" + request.form['title'] + "', '" + request.form['content'] + "')")
-
-        con.commit()
-
-        return flask.redirect(flask.url_for('index'))
-    else:
-        flask.flash(u'Mauvais mot de passe', 'error')
-        return flask.render_template('uploadNews.html')
-
-
-@app.route('/upload/clip/', methods=['GET', 'POST'])
-def uploadClip():
-    if request.method == 'GET':
-        return flask.render_template('upload.html')
-
-    if request.form['pass'] == "kabou":
-
-        cur.execute("INSERT INTO Clip VALUES(NULL, '" + request.form['title'] + "', '" + request.form['address'] + "', '" + request.form['comment']+"')")
-
-        con.commit()
-
-        return flask.redirect(flask.url_for('clip'))
-    else:
-        flask.flash(u'Mauvais mot de passe', 'error')
-        return flask.render_template('upload.html')
-
-
-@app.route('/ann/')
-def ann():
-    return flask.render_template('perceptron.html')
-@app.route('/ann/', methods=['GET', 'POST'])
-def ann():
-    if request.method == 'GET':
-        return flask.render_template('perceptron.html')
-
-    if request.form['pass'] == "kabou":
-
-        flask.flash(u'Everything\'s just fine...', 'success')
-        return flask.redirect(flask.url_for('ann'))
-    else:
-        flask.flash(u'Mauvais mot de passe', 'error')
-        return flask.redirect(flask.url_for('ann'))
-
-@app.route('/settings/')
-def settings():
-    return flask.render_template('settings.html')
-
 
 
 @app.route('/tests/')
@@ -105,32 +44,21 @@ def temp():
     def removeSpace(val):
         return val.replace(' ', '%20')
 
-    def clips():
-        db = mdb.connect('mysql.server', 'synbiozis', 'synbioz@database', 'synbiozis$default')
-        cursor = db.cursor()
-        cursor.execute("SELECT * FROM Clip")
+    def color(code):
+        return Markup(highlight(code, PythonLexer(), HtmlFormatter(full=False, style='default')))
 
-        rows = cursor.fetchall()
-        return rows
+    def pythonFile(file):
+        with open('/home/synbiozis/site/static/python/'+file+'.py', 'r') as f:
+            code = f.read()
+        return Markup(highlight(code, PythonLexer(), HtmlFormatter(full=False, style='default')))
 
-    def nbrNews():
-        db = mdb.connect('mysql.server', 'synbiozis', 'synbioz@database', 'synbiozis$default')
-        cursor = db.cursor()
-        cursor.execute("SELECT title, content FROM News")
+    def textFile(file):
+        with open('/home/synbiozis/site/static/python/'+file+'.txt', 'r') as f:
+            code = f.read()
+        #return Markup(highlight(code, PythonLexer(), HtmlFormatter(full=False, style='default')))
+        return Markup(code.replace('\n', '<br />'))
 
-        return len(cursor.fetchall()) -1
-
-    def readnews():
-        db = mdb.connect('mysql.server', 'synbiozis', 'synbioz@database', 'synbiozis$default')
-        cursor = db.cursor()
-        cursor.execute("SELECT title, content FROM News")
-        rows = cursor.fetchall()
-        return rows
-
-
-
-    return dict(removeSpace=removeSpace, clips=clips, nbrNews=nbrNews(), readnews=readnews())
-
+    return dict(removeSpace=removeSpace, color=color, pythonFile=pythonFile, textFile=textFile)
 
 
 if __name__ == '__main__':

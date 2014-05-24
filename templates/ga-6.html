@@ -1,0 +1,237 @@
+{% extends "bones.html" %}
+
+{% block name %}Genetic Algorithme{% endblock %}
+
+{% block title %}First code{% endblock %}
+
+{% block section %}
+
+<p>The following is one of the usual code you can find around. It is pretty simple and requires around 15 generation to reach the solution.</p>
+<br />
+
+
+<h2>Step by step code</h2>
+
+<h3 id='init'><a href='#init'>Initiation of the class</a></h3>
+
+<script>
+$(document).ready(function() {
+    $('#cinit').editable('http://www.example.com/save.php', {
+         type      : 'textarea',
+         data      : $('#cinit').text(),
+         onblur    : 'cancel',
+         tooltip   : 'Click to select'
+     }),
+
+     $('#cgen').editable('http://www.example.com/save.php', {
+         type      : 'textarea',
+         data      : $('#cgen').text(),
+         onblur    : 'cancel',
+         tooltip   : 'Click to select'
+     }),
+
+     $('#cgen').editable('http://www.example.com/save.php', {
+         type      : 'textarea',
+         data      : $('#cgen').text(),
+         onblur    : 'cancel',
+         tooltip   : 'Click to select'
+     }),
+
+     $('#cspe').editable('http://www.example.com/save.php', {
+         type      : 'textarea',
+         data      : $('#cspe').text(),
+         onblur    : 'cancel',
+         tooltip   : 'Click to select'
+     }),
+
+     $('#cgen').editable('http://www.example.com/save.php', {
+         type      : 'textarea',
+         data      : $('#cgen').text(),
+         onblur    : 'cancel',
+         tooltip   : 'Click to select'
+     }),
+
+     $('#cfitness').editable('http://www.example.com/save.php', {
+         type      : 'textarea',
+         data      : $('#cfitness').text(),
+         onblur    : 'cancel',
+         tooltip   : 'Click to select'
+     }),
+
+     $('#cfittest').editable('http://www.example.com/save.php', {
+         type      : 'textarea',
+         data      : $('#cfittest').text(),
+         onblur    : 'cancel',
+         tooltip   : 'Click to select'
+     }),
+
+     $('#cevolve').editable('http://www.example.com/save.php', {
+         type      : 'textarea',
+         data      : $('#cevolve').text(),
+         onblur    : 'cancel',
+         tooltip   : 'Click to select'
+     }),
+
+     $('#cpop').editable('http://www.example.com/save.php', {
+         type      : 'textarea',
+         data      : $('#cpop').text(),
+         onblur    : 'cancel',
+         tooltip   : 'Click to select'
+     }),
+
+     $('#cmax').editable('http://www.example.com/save.php', {
+         type      : 'textarea',
+         data      : $('#cmax').text(),
+         onblur    : 'cancel',
+         tooltip   : 'Click to select'
+     }),
+
+     $('#cfinal').editable('http://www.example.com/save.php', {
+         type      : 'textarea',
+         data      : $('#cfinal').text(),
+         onblur    : 'cancel',
+         tooltip   : 'Click to select'
+     });
+});
+</script>
+
+<div id="cinit" class="code">
+{{ color("""class population:
+	# Initialisation
+	def __init__(self, size=50, mut=15, toursize=5):
+		self.pop = [self.generate() for i in range(size)]
+		self.mut = mut
+		self.toursize = toursize
+		self.sol = '1111000000000000000000111100000000000000000000000000000000001111'""") }}</div>
+
+
+<p>The very first step is to create a population class, in order to make it simpler to use. The size variable indicate how many idividuals we should have for each population.
+Although it is set on 50, it will come usefull later to make smaller populations. mut is the mutation ratio, here its 15 for 1000, for it's more simpler for me to use integers.
+The solution is stored in sol. We will check out the toursize variable later.</p>
+<p>The pop variable is the list of every individuals in the population. Each individual is represented by a list of 64 integers.
+Although we could have initialise another class individual, a list is way easyer and faster in that simple case.</p>
+<p>Let's take a closer look to the generate() function :</p>
+
+<div id="cgen" class="code">{{ color("""def generate(self, size=64):
+	return [choice(['0', '1']) for i in range(size)]""") }}</div>
+
+<p>The choice function is from the python lib, so don't forget to import it from random.</p>
+<br />
+
+<h3>Special methods</h3>
+<p>The following functions are about making the the class easier to use, but ther are not really necessary.</p>
+
+<div id="cspe" class="code">{{ color('''# Specials methods
+def __getitem__(self, i):
+	return self.pop[i]
+
+def __setitem__(self, i, val):
+	self.pop[i] = val
+
+def __len__(self):
+	return len(self.pop)''') }}</div>
+<br /><br />
+
+<h3>getFitness</h3>
+<p>The function I'm about to use is one of the most import in genetic alogrithmes - if not the most.
+We call it each time we need to give a vallue to an individual, the closer the individual is to the solution, the greater is that value.
+In our case, the function is very simple, we just return the sum of each 64 values wich are equal to the solution. Here comes the code : </p>
+
+<div id="cfitness" class="code">{{ color('''
+def getFitness(self, val):
+	fitness = 0
+	for i in range(len(val)):
+		if str(val[i]) == self.sol[i]:
+			fitness += 1
+
+	return fitness
+    # Shorter : return len([1 for index, value in enumerate(val) if str(value) == self.sol[index]])
+''') }}</div>
+
+<br />
+<p>getFittest() returns the best individual of a given population. It's in fact a simple sorting algorithme</p>
+
+<div id="cfittest" class="code">{{ color('''
+def getFittest(self):
+	fit = self[0]
+	val = self.getFitness(fit)
+	for i in range(len(self)):
+		if self.getFitness(self[i]) > val:
+			fit = self[i]
+			val = self.getFitness(self[i])
+
+	return fit
+	# Shorter : return sorted([(self.getFitness(indi), indi) for indi in self])[-1][1]
+
+''') }}</div>
+<br /><br />
+
+<h3>Evolution</h3>
+<p>After all these boring functions, we finally get to code the funny part were we make our population evolve.</p>
+
+<div id="cevolve" class="code">{{ color("""
+def evolve(self):
+
+	newPop = population(len(self))
+
+	for i in range(len(self)):
+		parents = (self.tourn(), self.tourn())
+		newIndi = self.crossover(*parents)
+		newPop[i] = self.mutate(newIndi)
+
+	self.pop = newPop.pop
+	# Shorter : self.pop = [self.mutate(self.crossover(self.tourn(), self.tourn())) for _ in range(len(self))]
+""") }}</div>
+
+<p>There is a few yet undifined function I am using here, but nothing very complicated. The tourn() function is a very very basic natural seletion reproducing.
+In simple words, it picks random individuals who are the fittest. What it actually does, is picking a small number of totally random individuals, and return the fittest.
+The number is the toursize variable define in the initialisation.
+</p>
+<p>We can create a new individual with the crossover() function, wich takes random parts of both parents. The mutate() function make... the new born mutate a little bit.
+Then we remplace the old population by the new one ! These are the previous functions :</p>
+
+<div id="cpop" class="code">{{ color("""
+# Population methods
+def tourn(self):
+	new = population(self.toursize)
+	for i in range(self.toursize):
+		 new[i] = choice(self)
+	return new.getFittest()
+
+def crossover(self, j, k):
+	return [choice([j[i], k[i]]) for i in range(len(j))]
+
+def mutate(self, val):
+	return [choice(['0', '1']) if randrange(1000) <= self.mut else val[i] for i in range(len(val))]
+
+""") }}</div>
+<br /><br />
+
+<h3>Additionnal usefull methods</h3>
+<p>Just one more function to go, that we will use to know when we reach our goal. It simply returns the maximum fittness we can get. Here, it's the solution lenht.</p>
+
+<div id="cmax" class="code">{{ color("""
+def getMaxFit(self):
+	return len(self[0])
+
+""") }}</div>
+<br /><br />
+
+<h2>Final code</h2>
+
+<div id="cfinal" class="code">{{ pythonFile('ga') }}</div>
+
+<p><a href="{{ url_for('ga', numPage=2) }}">Next - Testing the code</a></p>
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+

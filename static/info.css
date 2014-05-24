@@ -40,25 +40,3 @@
 	box-shadow: 1px 1px 5px #f69999;
 
 }
-
-@media all and (max-width: 1024px)
-{
-	.info
-	{
-		margin-left: 9%;
-		width: 80%;
-		margin-top: 3px;
-
-		box-shadow: none;
-		border-radius: 10px 3px 12px 3px;
-
-	}
-}
-
-@media all and (max-device-width: 480px)
-{
-	.info
-	{
-		background: #daf1ba;
-	}
-}

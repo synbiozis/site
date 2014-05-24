@@ -1,0 +1,106 @@
+{% extends "bones.html" %}
+
+{% block name %}Genetic Algorithme{% endblock %}
+
+{% block title %}Modifying{% endblock %}
+
+{% block section %}
+
+<p>Now is the time to modifie our code using our knowledge of how evolution actually works.</p>
+
+<h2>Selection methods</h2>
+<p>We have been using a selection method called tournament selection. It is the simplest way of choosing individuals based on their fitness, but not the best.
+One of the biggest problems of that method is that an individual who doesn't have a good fitness hasn't a chance to be used in the next generation.
+In our very simple test, this is not an issue, but in more complex problems, it could have bad repercutions.
+For example, if there is a mutation that only one individual have, without having a great fitness, he probably won't be chosen by the tournament method.</p>
+<p>In nature, it doesn't work like that either, the best individuals don't always survive, and the weakest don't always die.
+In order to have a better repartition of the individuals, we are going to use another method, called the <a href="http://en.wikipedia.org/wiki/Fitness_proportionate_selection">roulette wheel selection</a>.
+Individuals have a higher chance to be chosen if their fitness is higher, but others have a little chance too. That is one possible code :</p>
+
+<div tabindex='0' class='code'>{{ color("""
+def selection(self, n):
+	indis = [self.getFitness(i) for i in self]
+	s = sum(indis)
+
+	for _ in range(n):
+		r = randrange(s)
+		s2 = 0
+		for index, value in enumerate(indis):
+			s2 += value
+			if s2 >= r:
+				yield self[index]
+				break
+	""") }}</div>
+<br /><br />
+
+<h2>Crossover</h2>
+<p>Here again, we have two solutions. The first one, we've been using, a little bit improved :</p>
+<div tabindex='0' class='code'>{{ color("""
+def crossover(self, indis, n):
+	j, k = indis
+	for _ in range(n):
+		yield [choice([j[i], k[i]]) for i in range(len(j))]
+	""") }}</div>
+<br />
+
+<p>The second one cut each individual in two random parts, mix the parts, and return the two results each time. Don't forget to import randrange from the random module.</p>
+<div tabindex='0' class='code'>{{ color("""
+def crossover(self, indis, n):
+	j, k = indis
+	for _ in range(n/2):
+		r = randrange(len(j))
+
+		yield j[:r]+k[r:]
+		yield k[:r]+j[r:]
+	""") }}</div>
+<br /><br />
+
+<h2>Evolution</h2>
+<h3>Structure</h3>
+<p>In this part, we will change the structure of the evolve() function. We will be using the same functions inside, in the same order, but not in the same way.
+This time, we make 2 selections of 5 individuals each.Then we crossover between this two selections, creating as many individuals as we need.
+Enough theory, this is the code :</p>
+
+<div tabindex='0' class='code'>{{ color("""
+def evolve(self):
+
+	next = list()
+
+	selections = [self.selection(len(self)/10) for _ in range(2)]
+
+	for indis in zip(*selections):
+		for elt in self.crossover(indis, 10):
+			next.append(self.mutate(elt))
+
+	self.pop = next
+
+    """) }}</div>
+<p>As usual, you can shorten the code, but as python says, "Readability counts."</p>
+<br />
+
+<h3>Elitism</h3>
+<p>The elitism is a modification that makes sure the fitness of our population never goes down.
+It is quite simple, you just save the best individual for the next generation, so he won't disappear.</p>
+<div tabindex='0' class='code'>{{ color("""
+def evolve(self):
+
+	self[-1] = self.getFittest()
+	next = list()
+
+	selections = [self.selection(len(self)/10) for _ in range(2)]
+
+	for indis in zip(*selections):
+		for elt in self.crossover(indis, 10):
+			next.append(self.mutate(elt))
+
+	self.pop[:-1] = next[:-1]
+
+    """) }}</div>
+<br /><br />
+<p><a href="{{ url_for('ga', numPage=4) }}">Next - New tests</a></p>
+{% endblock %}
+
+
+
+
+

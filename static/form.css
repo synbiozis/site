@@ -83,23 +83,3 @@ section legend
 {
     text-align: left;
 }
-
-
-@media all and (max-width: 1024px)
-{
-	section form input, section form textarea
-    {
-        display: inline-block;
-        width: 50%;
-        padding: 2px;
-    }
-
-    section form
-    {
-        text-align: center;
-        padding: 5px;
-        font-size: 15px;
-    }
-
-
-}

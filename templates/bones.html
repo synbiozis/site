@@ -10,28 +10,22 @@
 		<link href="{{ url_for('static', filename='footer.css') }}" rel="stylesheet" type="text/css" />
 		<link href="{{ url_for('static', filename='info.css') }}" rel="stylesheet" type="text/css" />
 		<link href="{{ url_for('static', filename='clip.css') }}" rel="stylesheet" type="text/css" />
-		<title>sYnbioZis - {% block title %}{% endblock %}</title>
+		<link href="{{ url_for('static', filename='code.css') }}" rel="stylesheet" type="text/css" />
+		<title>synbiozis - {% block title %}{% endblock %}</title>
     </head>
 
     <body>
-
+        <script type="text/javascript" src="{{ url_for('static', filename='jquery.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='jquery.jeditable.js') }}"></script>
     	<nav>
  			<ul>
- 				<li><a href="{{ url_for('index') }}">Acceuil</a></li>
- 				<li><a href = "{{ url_for('clip') }}">Clip</a></li>
-                <li><span class="roll">Upload</span>
+ 				<li><a href="{{ url_for('index') }}">Synbiozis</a></li>
+                <li><span class="roll">Projects</span>
                     <ul>
-                        <li><a href="{{ url_for('uploadClip') }}" >Clip</a></li>
-                        <li><a href="{{ url_for('uploadNews') }}">News</a></li>
+                        <li><a href="{{ url_for('ga') }}" >Genetic Algos</a></li>
                     </ul>
                 </li>
-                <li><span class="roll">Python</span>
-                    <ul>
-                        <li><a href="{{ url_for('ann') }}" >Perceptron</a></li>
-                    </ul>
-                </li>
-                <li><a href = "{{ url_for('tests') }}">Clip</a></li>
-			</ul>
+            </ul>
 			<img src='{{ url_for('static', filename='image/setting.svg') }}' width="40" height="40" alt="up" />
     	</nav>
         <div class=infos>
@@ -61,7 +55,7 @@
         </div>
 
     	<section>
-    		<h1>{{ self.title() }}</h1>
+    		<h1>{% block name %}{% endblock %} - {{ self.title() }}</h1>
     		{% block section %}<p>Illud autem non dubitatur quod cum esset aliquando virtutum omnium domicilium Roma, ingenuos advenas plerique nobilium, ut Homerici bacarum suavitate Lotophagi, humanitatis multiformibus officiis retentabant.</p>
 
     		<p>Alios autem dicere aiunt multo etiam inhumanius (quem locum breviter paulo ante perstrinxi) praesidii adiumentique causa, non benevolentiae neque caritatis, amicitias esse expetendas; itaque, ut quisque minimum firmitatis haberet minimumque virium, ita amicitias appetere maxime; ex eo fieri ut mulierculae magis amicitiarum praesidia quaerant quam viri et inopes quam opulenti et calamitosi quam ii qui putentur beati.</p>
@@ -72,14 +66,41 @@
 
     		<p>Coactique aliquotiens nostri pedites ad eos persequendos scandere clivos sublimes etiam si lapsantibus plantis fruticeta prensando vel dumos ad vertices venerint summos, inter arta tamen et invia nullas acies explicare permissi nec firmare nisu valido gressus: hoste discursatore rupium abscisa volvente, ruinis ponderum inmanium consternuntur, aut ex necessitate ultima fortiter dimicante, superati periculose per prona discedunt.</p>
             {% endblock %}
-
     	</section>
 
+        <script>
+            var elts = document.querySelectorAll('.code');
+            var select = false;
+            var code = "";
+            for (var cur=0; cur<elts.length; cur++){
 
+                elts[cur].addEventListener('dblclick', function() {
+                    if (select) return;
+                    this.setAttribute('contenteditable', 'true');
+                    this.setAttribute('class', 'codeSelect');
+                    code = this.innerHTML;
+                    this.innerHTML = this.innerText.replace(/\n/g, '<br />').replace(/\t/g, '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;');
+                    select = true;
+                }, false);
+
+                elts[cur].addEventListener('blur', function() {
+                    this.setAttribute('contenteditable', 'false');
+                    this.setAttribute('class', 'code');
+                    this.innerHTML = code;
+                    select = false;
+                })
+            }
+        </script>
 
     	<footer>
+    	    <div class="w3c"><a href="http://jigsaw.w3.org/css-validator/check/referer">
+                <img style="border:0;width:88px;height:31px"
+                    src="http://jigsaw.w3.org/css-validator/images/vcss-blue"
+                    alt="CSS Valide !" />
+            </a></div>
     		Copyright sYnbioZis<br />
-    		Powered by Flask
+    		Powered by Flaask
+
     	</footer>
 
 
