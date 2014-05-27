@@ -1,0 +1,146 @@
+{% extends "bones.html" %}
+
+{% block name %}Artificial neural networks{% endblock %}
+
+{% block title %}First overview - <em>incomplete</em>{% endblock %}
+
+{% block section %}
+
+<h2>Formulas</h2>
+<p>The following formulas are made specially for the exmaple we're working on, but can be easly rewrite in a more universal way,
+if you want it to work for any MLP with any nomber of hidden layers, and neuron on each input, hidden and output layer.</p>
+<h3>Update function</h3>
+<p>There is only one formula in this part, it will allow us to compute the value of a neuron in a layer based on the value of the neurons below and their weights.
+Each neuron equals : $$ \sum W_i \cdot X_i $$ </p>
+
+<h3>Backpropagate functions</h3>
+<p>Here, it's a little bit more complex.
+First, we calculate the error ΔE<sub>o</sub> of the output layer, based on what we got and what we should have (1).
+We then use that value to compute the error ΔE<sub>h</sub> of the hidden layer, using it's weights (2).
+Once we have a value for the error of each output and hidden layers, we can find the varation ΔW of the weights of these layers (3).
+We can finally adjust our weights, using the variation and α, wich will be the learning rate (4). The higher it gets, the quicker the MLP will learn, but it may not be as precise.
+
+$$ (1) : \Delta E_o = Y - Y' $$
+$$ (2) : \Delta E_h = W_h \cdot \Delta E_o $$
+
+$$ (3) : \Delta W_i = V_i \cdot \Delta E_i $$
+
+$$ (4) : W'_i  = W_i + \alpha \cdot \Delta W_i $$
+</p>
+
+<h2>Written example</h2>
+<p>The best thing to do in order to remember and understand how this thing works is to beggin with a written example, with simple values.
+We will be able later to code it. Lets begin with our three layer perceptron !
+</p>
+<h3>Initialisation</h3>
+<p>What do wee need first ? Mainly two matrix of weights, one from the input to the hidden layer, W<sub>0</sub>, the other from the hidden to the output layer, W<sub>1</sub>
+Always keep in mind that we add one neuron with a 1.0 value at on the input layer, we will explain why later.
+The structure of the matrix is quite simple : the number of lines is the number of neuron in the layer, the number of colomn is given by the number of neuron on the layer above.
+We usually initialise each weight whith a random value, here we will just assume its 0.2, for an easier readability.
+
+$$ W_0 = \begin{pmatrix}
+            0.2 & 0.2 & 0.2 \\
+            0.2 & 0.2 & 0.2
+         \end{pmatrix}
+\mspace{50mu}
+    W_1 = \begin{pmatrix}
+            0.2 \\
+            0.2 \\
+            0.2
+         \end{pmatrix}
+$$
+
+
+</p>
+
+<h3>Updating</h3>
+<p>Here, each V matrix represent the value of a layer, V<sub>0</sub> for the input layer for example. Remeber that X is the input value, here 0.5.
+
+
+$$ V_0 =
+\begin{pmatrix}
+    0.5 & 1.0
+\end{pmatrix}
+$$
+
+$$ V_1 = V_0 \cdot W_0 =
+\begin{pmatrix}
+    0.3 & 0.3 & 0.3
+\end{pmatrix}
+
+$$
+
+$$ V_2 = V_1 \cdot W_1 = 0.18 $$
+</p>
+
+<h3>Backpropagating</h3>
+<p>Now is the tricky part. Y, which represent the expected input, is set at 0.8 : it's the goal we're trying to reach.
+Let's begin by calculating the initial error : this is the error for the output layer, so we are searching for a ΔE<sub>2</sub> (1). We just use the formula seen previously.
+Then we compute the error of the hidden layer, using its weight (2). This being done, we can find the variation for each layer (2 and 3), and adjust our weights (4 and 5).
+We'll just put α to 1 to make things simpler.
+
+$$ (1) : \Delta E_2 = Y - V_2 = 0.62 $$
+
+$$ (2) : \Delta E_1 = W_1 \cdot \Delta E_0 =
+\begin{pmatrix}
+    0.124 \\
+    0.124 \\
+    0.124
+\end{pmatrix}
+$$
+
+$$ (2) : \Delta W_0 = V_0 \cdot \Delta E_1 =
+\begin{pmatrix}
+    0.05 & 0.05 & 0.05 \\
+    0.1 & 0.1 & 0.1
+\end{pmatrix}
+$$
+
+$$ (3) : \Delta W_1 = V_1 \cdot \Delta E_2 =
+\begin{pmatrix}
+    0.186 \\
+    0.186 \\
+    0.186
+\end{pmatrix}
+$$
+
+$$ (4) : \Delta W'_0 = W_0 + \Delta W_0 \cdot \alpha =
+\begin{pmatrix}
+    0.25 & 0.25 & 0.25 \\
+    0.3 & 0.3 & 0.3
+\end{pmatrix}
+$$
+
+$$ (5) : \Delta W'_1 = W_1 + \Delta W_0 \cdot \alpha =
+\begin{pmatrix}
+    0.386 \\
+    0.386 \\
+    0.386
+\end{pmatrix}
+$$
+
+</p>
+
+
+<h3>Memo</h3>
+<p>Here is a little memo to sum up everything we just saw. The only difference is in the ΔE definition : index are in the wrong order until we reverse them.
+<a href="{{ url_for('static', filename='image/memo.png') }}" download="memo.png">Download</a></p>
+
+
+<p><a href="{{ url_for('ann', numPage=3) }}">Next part - Code</a></p>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

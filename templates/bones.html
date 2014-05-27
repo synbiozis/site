@@ -11,18 +11,26 @@
 		<link href="{{ url_for('static', filename='info.css') }}" rel="stylesheet" type="text/css" />
 		<link href="{{ url_for('static', filename='clip.css') }}" rel="stylesheet" type="text/css" />
 		<link href="{{ url_for('static', filename='code.css') }}" rel="stylesheet" type="text/css" />
+		<link href="{{ url_for('static', filename='table.css') }}" rel="stylesheet" type="text/css" />
+
+		<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
 		<title>synbiozis - {% block title %}{% endblock %}</title>
     </head>
 
     <body>
         <script type="text/javascript" src="{{ url_for('static', filename='jquery.js') }}"></script>
         <script type="text/javascript" src="{{ url_for('static', filename='jquery.jeditable.js') }}"></script>
+
+        <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
+
     	<nav>
  			<ul>
  				<li><a href="{{ url_for('index') }}">Synbiozis</a></li>
                 <li><span class="roll">Projects</span>
                     <ul>
                         <li><a href="{{ url_for('ga') }}" >Genetic Algos</a></li>
+                        <li><a href="{{ url_for('ann') }}">Neural Networks</a></li>
                     </ul>
                 </li>
             </ul>
@@ -91,6 +99,7 @@
                 })
             }
         </script>
+
 
     	<footer>
     	    <div class="w3c"><a href="http://jigsaw.w3.org/css-validator/check/referer">

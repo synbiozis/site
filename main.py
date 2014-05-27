@@ -27,6 +27,11 @@ def index():
 def ga(numPage=0):
     return flask.render_template("ga-"+str(numPage)+".html")
 
+@app.route('/ann/')
+@app.route('/ann/<int:numPage>')
+def ann(numPage=0):
+    return flask.render_template("ann-"+str(numPage)+".html")
+
 @app.route('/bones/')
 def bones():
     flask.flash(u'You are at the root of the project !', 'success')

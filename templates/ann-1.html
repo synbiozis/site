@@ -1,0 +1,76 @@
+{% extends "bones.html" %}
+
+{% block name %}Artificial neural networks{% endblock %}
+
+{% block title %}Theory - <em>incomplete</em>{% endblock %}
+
+{% block section %}
+<h2>Why are we using neural networks ?</h2>
+<p>Neural networks appeared to be very good in such fields as prediction.
+What there is to remember, is that the algorithme is able to predict values using the history of this value.
+For example, when showing a function for example, it can find a pattern and use it to predict what will happend next.
+</p>
+
+<h2>Structure of our example</h2>
+<p>You've probably already seen pictures like the following. This blueprint is probably the best thing to keep in mind while coding the MLP.
+It shoes perfeclty how every neuron from a layer is connected to each of the neuron of the layer above.
+It will come handy for the structure of the weights, wich can be kinda tricky.
+</p>
+
+<p><img src='{{ url_for('static', filename='image/ann-blueprint.svg') }}' width='500' alt="ann blueprint" /></p>
+
+<p>From now on, we will be using this very network to write down later any kind of MLP.
+This is a table that associate letters with their value, for easier writing in the future.</p>
+
+
+<table>
+    <thead>
+        <tr>
+            <th>Letter</th>
+            <th>Value</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>X</td>
+            <td>Input</td>
+        </tr>
+        <tr>
+            <td>Y</td>
+            <td>Expected output</td>
+        </tr>
+        <tr>
+            <td>Y'</td>
+            <td>Given output</td>
+        </tr>
+        <tr>
+            <td>W</td>
+            <td>Weights</td>
+        </tr>
+        <tr>
+            <td>E</td>
+            <td>Error</td>
+        </tr>
+        <tr>
+            <td>V</td>
+            <td>Value of a neuron</td>
+        </tr>
+    </tbody>
+</table>
+
+
+<h2>Main Functions</h2>
+<p>There are only two functions we will be using, each one is represented by an arrow on my sketch.</p>
+<h3>Update</h3>
+<p>This function, quite simple actually, will show the result of an entry.
+On my example, we have only one input (forget the + for now), and one output.
+We will compute the entry from the input level, through the hidden layer, to the output.</p>
+<h3>Backpropagate</h3>
+<p>Now this function is much harder to understand and code. We start with an output given by the user, as a solution to reach.
+We start from the output, by calculating the error between what was given and what was expected, we then compute that error through the hidden layer unto the input using weights.
+The second part consist in adjusting the error, and then modifying the weights in order to have a better result.
+</p>
+
+
+<p><a href="{{ url_for('ann', numPage=2) }}">Next part - First overview</a></p>
+{% endblock %}

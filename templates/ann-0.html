@@ -1,0 +1,26 @@
+{% extends "bones.html" %}
+
+{% block name %}Artificial neural networks{% endblock %}
+
+{% block title %}Introduction{% endblock %}
+
+{% block section %}
+<h2>The project</h2>
+<p>This project is about understanding how <a href='https://en.wikipedia.org/wiki/Artificial_neural_network'>neural network</a> actually works,
+and more precisly a kind of ann called <a href='https://en.wikipedia.org/wiki/Multilayer_perceptron'>multilayer perceptron</a> (MLP).
+By understanding the mecanismes of this algorithme, we'll later be able to improve it better.
+Genetic algorithmes are used in many fields, but mainly in prediction. We will see later why these algorithmes are perfect for the job.</p>
+<br />
+<h2>A simple test</h2>
+<p>When we want to test a multi layer neural network, we usually run through the <a href='http://www.wolframalpha.com/input/?i=xor+table'>Xor logic gate</a>.
+This example is very simple, doesn't take long to compute, but still can't be solved by a single layer neural network.
+This test is the most common, but we we'll see some others that can be more than usefull.</p>
+<br />
+
+<h2>Computer</h2>
+<p>I'm used to write the time my code takes to run. The result will com from a laptop, with a quite powerfull processor (intel i7-3710QM).
+I am running on Ubuntu (14.04), so don't forget to adapt the codes according to your distribution/OS</p>
+<br />
+
+<p><a href="{{ url_for('ann', numPage=1) }}">Next part - Theory</a></p>
+{% endblock %}
